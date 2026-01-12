@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cure++</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <span class="menu" onclick="toggleMenu()">&#9776;</span>
+    <span class="logo" >Cure +➕</span>
+</div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+    <a href="#" onclick="closeMenu()">×</a>
+    <a href="#diseases">Disease Prediction</a>
+    <a href="/history">Your History</a>
+    <a href="#about">About Developers</a>
+    <a href="/faq">FAQ</a>
+
+</div>
+
+<!-- Hero Section with background image -->
+<div class="hero">
+    <h2>Human multiple disease prediction system</h2>
+    <p>Predict Diabetes, Heart, Liver, and Kidney diseases accurately and efficiently.</p>
+</div>
+
+<!-- Disease Cards (Clickable) -->
+<div id="diseases" class="cards-container">
+    <a href="/diabetes" class="card">
+        <img src="{{ url_for('static', filename='images/diabetes.jpg') }}" alt="Diabetes Icon" class="icon">
+        <h3>Diabetes</h3>
+        <p>Check your risk level for diabetes.</p>
+    </a>
+    <a href="/heart" class="card">
+        <img src="{{ url_for('static', filename='images/heart.jpg') }}" alt="Heart Icon" class="icon">
+        <h3>Heart Disease</h3>
+        <p>Monitor your heart health.</p>
+    </a>
+    <a href="/liver" class="card">
+        <img src="{{ url_for('static', filename='images/liver.jpg') }}" alt="Liver Icon" class="icon">
+        <h3>Liver Disease</h3>
+        <p>Check liver condition quickly.</p>
+    </a>
+    <a href="/kidney" class="card">
+        <img src="{{ url_for('static', filename='images/kidney.jpg') }}" alt="Kidney Icon" class="icon">
+        <h3>Kidney Disease</h3>
+        <p>Monitor kidney health status.</p>
+    </a>
+</div>
+
+<!-- About Section -->
+<div id="about" class="section">
+    <h2>About Developers</h2>
+    <p>Cure++ is developed by a team of B.Tech 7th semester students of GEC Banka..</p>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>Developed by: Abhinav Kumar, [Member 2], [Member 3], [Member 4]</p>
+    <p>
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a> | 
+        <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a>
+    </p>
+    <p>&copy; 2026 Cure++</p>
+</footer>
+
+<!-- Animated Live Viewer Counter -->
+<div id="live-viewer">
+    👀 Live viewers: <span id="count">{{ viewers }}</span>
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sideMenu").style.width = "250px";
+}
+function closeMenu() {
+    document.getElementById("sideMenu").style.width = "0";
+}
+
+// Smooth scroll for in-page links
+document.querySelectorAll('.side-menu a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+        closeMenu();
+    });
+});
+
+// Live viewers update every 5 seconds
+async function updateViewers() {
+    try {
+        const response = await fetch('/get_viewers');
+        const data = await response.json();
+        document.getElementById('count').innerText = data.viewers;
+    } catch (err) {
+        console.error("Error fetching viewers:", err);
+    }
+}
+setInterval(updateViewers, 5000);
+</script>
+
+<!-- Moving Disclaimer -->
+<div class="disclaimer-bar">
+    <div class="disclaimer-text">
+        Disclaimer: Cure++ is for educational purposes only and does not provide medical advice. Please consult a qualified healthcare professional.
+    </div>
+</div>
+
+</body>
+</html>

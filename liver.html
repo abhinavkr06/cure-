@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liver Prediction - Cure++</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <span class="logo">Cure++</span>
+</div>
+
+<div class="form-container">
+    <h2>Liver Disease Prediction</h2>
+
+    <form method="POST">
+
+        <input type="number" step="any" name="age" placeholder="Age" required>
+
+        <input type="number" step="1" name="gender" placeholder="Gender (1 = Male, 0 = Female)" required>
+
+        <input type="number" step="any" name="total_bilirubin" placeholder="Total Bilirubin" required>
+
+        <input type="number" step="any" name="direct_bilirubin" placeholder="Direct Bilirubin" required>
+
+        <input type="number" step="any" name="alk_phos" placeholder="Alkaline Phosphotase" required>
+
+        <input type="number" step="any" name="sgpt" placeholder="SGPT (ALT)" required>
+
+        <input type="number" step="any" name="sgot" placeholder="SGOT (AST)" required>
+
+        <input type="number" step="any" name="total_proteins" placeholder="Total Proteins" required>
+
+        <input type="number" step="any" name="albumin" placeholder="Albumin" required>
+
+        <input type="number" step="any" name="ag_ratio" placeholder="A/G Ratio" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+        <div class="result-box">{{ result }}</div>
+    {% endif %}
+</div>
+</body>
+</html>

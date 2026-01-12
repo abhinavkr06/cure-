@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Diabetes Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <span class="menu" onclick="toggleMenu()">&#9776;</span>
+    <span class="logo">Cure++</span>
+</div>
+
+<div id="sideMenu" class="side-menu">
+    <a href="#" onclick="closeMenu()">×</a>
+    <a href="/">Home</a>
+</div>
+
+<div class="form-container">
+    <h2>Diabetes Prediction</h2>
+
+    <form method="POST">
+
+        {% for field in ['pregnancies','glucose','bloodpressure','skinthickness','insulin','bmi','dpf','age'] %}
+        <div class="input-group">
+            <input 
+                type="number" 
+                step="any" 
+                name="{{ field }}" 
+                placeholder=" " 
+                required>
+            <label>{{ field.replace('_',' ').title() }}</label>
+        </div>
+        {% endfor %}
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+    <div class="result-box">{{ result }}</div>
+    {% endif %}
+</div>
+</body>
+</html>

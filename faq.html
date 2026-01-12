@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cure++ | FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <span class="menu" onclick="toggleMenu()">&#9776;</span>
+    <span class="logo">Cure++</span>
+</div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+    <a href="#" onclick="closeMenu()">×</a>
+    <a href="/">Home</a>
+    <a href="/faq">FAQ</a>
+</div>
+
+<!-- FAQ Section -->
+<div class="faq-container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <button class="faq-question">What is Cure++?</button>
+        <div class="faq-answer">
+            <p>Cure++ is a web-based Human Multiple Disease Prediction System that helps predict diseases like Diabetes, Heart, Liver, and Kidney using AI techniques.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Which diseases can Cure++ predict?</button>
+        <div class="faq-answer">
+            <p>Cure++ currently supports prediction for Diabetes, Heart Disease, Liver Disease, and Kidney Disease.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">How does Cure++ work?</button>
+        <div class="faq-answer">
+            <p>Users enter basic health parameters into disease-specific forms. These inputs are analyzed by the system to provide prediction results.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Is Cure++ a replacement for a doctor?</button>
+        <div class="faq-answer">
+            <p>No. Cure++ is not a medical replacement. It is a decision-support tool and users should always consult medical professionals.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Is my health data stored or shared?</button>
+        <div class="faq-answer">
+            <p>No. Cure++ does not permanently store or share user health data.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Can Cure++ be accessed on mobile devices?</button>
+        <div class="faq-answer">
+            <p>Yes. Cure++ is fully responsive and works on mobiles, tablets, and desktops.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Is Cure++ free to use?</button>
+        <div class="faq-answer">
+            <p>Yes. Cure++ is an academic project and completely free to use.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sideMenu").style.width = "250px";
+}
+function closeMenu() {
+    document.getElementById("sideMenu").style.width = "0";
+}
+
+// Accordion
+const questions = document.querySelectorAll(".faq-question");
+questions.forEach(q => {
+    q.addEventListener("click", () => {
+        q.classList.toggle("active");
+        const answer = q.nextElementSibling;
+        answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + "px";
+    });
+});
+</script>
+
+</body>
+</html>

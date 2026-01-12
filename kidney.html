@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kidney Prediction - Cure++</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <span class="logo">Cure++</span>
+</div>
+
+<div class="form-container">
+    <h2>Kidney Disease Prediction</h2>
+
+    <form method="POST">
+
+        <input type="number" step="any" name="age" placeholder="Age (years)" required>
+
+        <input type="number" step="any" name="blood_pressure" placeholder="Blood Pressure (mm/Hg)" required>
+
+        <input type="number" step="any" name="specific_gravity" placeholder="Specific Gravity of Urine" required>
+
+        <input type="number" step="any" name="blood_glucose" placeholder="Random Blood Glucose (mg/dl)" required>
+
+        <input type="number" step="any" name="serum_creatinine" placeholder="Serum Creatinine (mg/dl)" required>
+
+        <input type="number" step="any" name="hemoglobin" placeholder="Hemoglobin (g/dL)" required>
+
+        <input type="number" step="any" name="crp" placeholder="C-Reactive Protein (CRP)" required>
+
+        <input type="number" step="any" name="il6" placeholder="Interleukin-6 (IL-6)" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+        <div class="result-box">{{ result }}</div>
+    {% endif %}
+</div>
+
+</body>
+</html>
